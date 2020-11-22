@@ -22,11 +22,13 @@ curses.cbreak()
 # map arrow keys to special values
 screen.keypad(True)
 
-DC1=7
+DC=7
 
 try:
     while(True):
+        # getting the input from keyboard
         char = screen.getch()
+        # stop the loop in case '0' is entered
         if char == ord('0'):
             servo_left_right.ChangeDutyCycle(7)
             servo_up_down.ChangeDutyCycle(7)
