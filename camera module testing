@@ -1,0 +1,12 @@
+import cv
+import numpy as np
+
+cam=cv2.VideoCapture(0)
+while True:
+    success, image=cam.read()
+    cv2.imshow('camera', img)
+    k=cv2.waitKey(30) & 0xff
+    if k==27:
+        break
+cam.release()
+cv2.destroyAllWindows()
