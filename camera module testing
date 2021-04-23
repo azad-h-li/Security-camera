@@ -4,9 +4,8 @@ import numpy as np
 cam=cv2.VideoCapture(0)
 while True:
     success, image=cam.read()
-    cv2.imshow('camera', img)
-    k=cv2.waitKey(30) & 0xff
-    if k==27:
+    cv2.imshow('testing', img)
+    if cv2.waitKey(20) & 0xFF==ord('s'):
         break
 cam.release()
 cv2.destroyAllWindows()
