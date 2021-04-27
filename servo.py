@@ -12,7 +12,7 @@ servo_left_right=GPIO.PWM(12,50)
 #power of the servo motors
 servo_up_down.start(0)
 time.sleep(0.2)
-servo_left_right.start(7.5)
+servo_left_right.start(0)
 time.sleep(0.2)
 
 screen = curses.initscr()
@@ -30,8 +30,8 @@ try:
     while(True):
         #reading the input from keyboard
         char = screen.getch()
-        #incase 0 has been pressed, exit from the program
-        if char == ord('0'):
+        #in case s button has been pressed, exit from the program
+        if char == ord('s'):
             servo_left_right.ChangeDutyCycle(7.5) #stop the servo motor
             servo_up_down.ChangeDutyCycle(7) #rotate the sevo motor to 90-degree position
             time.sleep(0.05)
@@ -39,22 +39,22 @@ try:
             servo_left_right.stop()
             GPIO.cleanup()
             break
-        #incase right arrow has been pressed, display “right” on the terminal and rotate the servo in clockwise direction
+        #in case right arrow has been pressed, display “right” on the terminal and rotate the servo in clockwise direction
 
         elif char == curses.KEY_RIGHT:
             screen.addstr(0, 0, 'right    ')     
-            servo_left_right.ChangeDutyCycle(7.3)
+            servo_left_right.ChangeDutyCycle(6.7)
             time.sleep(0.005)
-            servo_left_right.ChangeDutyCycle(7.5)
+            servo_left_right.ChangeDutyCycle(0)
 
-        #incase left arrow has been pressed, display “left” on the terminal and rotate the servo in anticlockwise direction
+        #in case left arrow has been pressed, display “left” on the terminal and rotate the servo in anticlockwise direction
         elif char == curses.KEY_LEFT:
             screen.addstr(0, 0, 'left    ')
-            servo_left_right.ChangeDutyCycle(7.8)
+            servo_left_right.ChangeDutyCycle(7.3)
             time.sleep(0.005)
-            servo_left_right.ChangeDutyCycle(7.5)
+            servo_left_right.ChangeDutyCycle(0)
 
-        #incase down arrow has been pressed, display “down” on the terminal and rotate the appropriate servo in a direction that camera rotates down.
+        #in case down arrow has been pressed, display “down” on the terminal and rotate the appropriate servo in a direction that camera rotates down.
         elif char == curses.KEY_DOWN:
             screen.addstr(0, 0, 'down    ')
             if DC>2:
@@ -63,7 +63,7 @@ try:
                 time.sleep(0.01)
                 servo_up_down.ChangeDutyCycle(0)
 
-#incase up arrow has been pressed, display “up” on the terminal and rotate the appropriate servo in a direction that camera rotates up.
+        #in case up arrow has been pressed, display “up” on the terminal and rotate the appropriate servo in a direction that camera rotates up.
         elif char == curses.KEY_UP:
             screen.addstr(0, 0, 'up    ')
             if DC<12:
