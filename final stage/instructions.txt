@@ -1,0 +1,8 @@
+#1. Training recognizer for identity recognition.
+  #1.1. Create a new folder in the same directory where all the files will be located, name it "images" and fill it with folders. Each of these folders 
+  is set of clear face images of one person and names by person's name.
+  #1.2Run images.py to train a recognizer for identity recognition.
+  
+#2. Modify the pathes for the used files in each python file.
+
+#3. Ready to be run!
